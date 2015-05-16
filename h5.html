@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>html5拍照</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<video id="video" autoplay=""style='width:640px;height:480px'></video>
+<button id="paizhao">拍照</button>
+<canvas id="canvas"  width="640" height="480"></canvas>
+<script type="text/javascript">
+    var video=document.getElementById("video");
+    var context=canvas.getContext("2d");
+    var errocb=function(){
+        console.log("sth srong");
+    }
+
+    if(navigator.getUserMedia){
+//        alert("a");
+        navigator.getUserMedia({"video":true},function(stream){
+            video.src=stream;
+            video.play();
+        },errocb);
+    }else if(navigator.webkitGetUserMedia){
+//        alert("b");
+        navigator.webkitGetUserMedia({"video":true},function(stream){
+            video.src=window.webkitURL.createObjectURL(stream);
+			video.play();
+
+
+        },errocb);
+    }
+
+    document.getElementById("paizhao").addEventListener("click",function(){
+//        video.play();
+        var drawPng = context.drawImage(video,0,0,640,480);
+        var imagData = context.getImageData(0,0,640,480);
+//        video.pause();
+//        video.sto
+//        alert(imagData.data.length);
+//        context.
+
+//        var image = new Image();
+//        image.src = context.toDataURL("image/png");
+
+//        alert(image.src);
+//        return image;
+
+//        drawPng.
+
+//        alert("hello");
+//        var png = context.toDataURL();
+//        var data = context.toString();//.toDataURL();
+//        alert("hello2=="+data.toString());
+//        var b64 = data.substring(22);
+
+//        alert(b64);
+//        try
+//        {
+//            FileStream fs = File.Create("/home/a.png");
+//            byte[] bytes = Convert.FromBase64String(b64);
+//            fs.Write(bytes, 0, bytes.Length);
+//            fs.Close();
+//        }
+//        catch (Exception ex)
+//        {
+//            alert("error");
+//        }
+
+//        context.toDataURL();
+//        Canvas2Image.saveAsPNG(context, false, 100, 100);
+//        context.save();
+
+    });
+
+
+
+    timeId = setInterval("helloworld();",5000);
+
+    function helloworld()
+    {
+//        alert("OK");
+//        $("#paizhao").click();
+        document.getElementById("paizhao").click();
+    }
+
+
+</script>
+</body>
+</html>
